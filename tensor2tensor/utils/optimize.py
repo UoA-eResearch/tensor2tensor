@@ -238,7 +238,7 @@ class ConditionalOptimizer(tf.train.Optimizer):
     self._zero_grads = hparams.optimizer_zero_grads
 
   def compute_gradients(self, loss, var_list=None, **kwargs):  # pylint: disable=arguments-differ
-    if contrib.is_tf2:
+    if hasattr(self._opt, "get_gradients"):
       gradients = self._opt.get_gradients(loss, var_list)
       gradients = zip(gradients, var_list)
     else:

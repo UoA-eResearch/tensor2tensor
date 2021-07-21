@@ -89,7 +89,10 @@ def framework(msg='err'):
         name_scope=tf.name_scope,
         deprecated=deprecated,
         nest=tf.nest,
-        argsort=tf.argsort)
+        argsort=tf.argsort,
+        load_checkpoint=tf.train.load_checkpoint,
+        get_trainable_variables=tf.compat.v1.trainable_variables,
+    )
 
   from tensorflow.contrib import framework as contrib_framework  # pylint: disable=g-direct-tensorflow-import,g-import-not-at-top
   return contrib_framework
